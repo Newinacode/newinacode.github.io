@@ -1,4 +1,5 @@
 const initialState = {
+  brave: false,
   terminal: false,
   valorant: false,
   fortnite: false,

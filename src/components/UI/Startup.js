@@ -1,39 +1,56 @@
 import React from "react";
-
+import { OpenApplication } from "../../actions/App";
+import { useDispatch } from "react-redux";
 function Startup() {
+  const dispatch = useDispatch();
   return (
     <div className="flex absolute bottom-0 left-1/12 h-3/4 w-1/4 bg-slate-600">
       {/* side icons */}
       <div className="flex flex-col justify-between items-center bg-slate-800 h-5/6 w-1/6 mt-6 ml-2">
-        <div className="flex justify-center w-full hover:bg-white">
+        <div
+          className="flex justify-center w-full hover:bg-white"
+          onClick={() => dispatch(OpenApplication("brave"))}
+        >
           <img
             src="/images/brave.png"
             alt="brave icons"
             className="w-10 h-10 p-1"
           />
         </div>
-        <div className="flex justify-center w-full hover:bg-white">
+        <div
+          className="flex justify-center w-full hover:bg-white"
+          onClick={() => dispatch(OpenApplication("discord"))}
+        >
           <img
             src="/images/discord.png"
             alt="discord icons"
             className="w-12 h-12 p-1"
           />
         </div>
-        <div className="flex justify-center w-full hover:bg-white">
+        <div
+          className="flex justify-center w-full hover:bg-white"
+          onClick={() => dispatch(OpenApplication("fortnite"))}
+        >
           <img
             src="/images/fn.png"
             alt="fortnite icons"
             className="w-12 h-12 p-1"
           />
         </div>
-        <div className="flex justify-center w-full hover:bg-white">
+        <div
+          className="flex justify-center w-full hover:bg-white"
+          onClick={() => dispatch(OpenApplication("valorant"))}
+        >
           <img
             src="/images/valo2.png"
             alt="valorant icons"
             className="w-10 h-10 p-1"
           />
         </div>
-        <div className="flex justify-center w-full hover:bg-white">
+        <div
+          className="flex justify-center w-full hover:bg-white"
+          onClick={() => dispatch(OpenApplication("portfolio"))}
+        >
           <img
             src="/images/portfolio.png"
             alt="portfolio icons"
