@@ -4,28 +4,34 @@ import { StoreContext } from "../../utils/Store";
 import ValorantTab from "../App/ValorantTab";
 import Fortnite from "../App/Fortnite";
 import Startup from "./Startup";
+import { useSelector } from "react-redux";
 import Portfolio from "../App/Portfolio";
+import { useDispatch } from "react-redux";
+import { CloseApplication } from "../../actions/App";
 function Background() {
-  const { terminal, valorant, fortnite, startup, portfolio } =
-    useContext(StoreContext);
-  const [term, setTerm] = terminal;
-  const [valo, setValo] = valorant;
-  const [fn, setFn] = fortnite;
-  const [startupMenu, setStartupMenu] = startup;
-  const [portf, setPortf] = portfolio;
-
+  const dispatch = useDispatch();
+  const { terminal, valorant, fortnite, portfolio, startup } = useSelector(
+    (state) => state
+  );
   return (
-    <div className="relative" onClick={() => setStartupMenu(false)}>
+    <div
+      className="relative"
+      onClick={() => {
+        if (startup) {
+          dispatch(CloseApplication("startup"));
+        }
+      }}
+    >
       <img
         src="/images/back3.jpg"
         alt="background image"
         className="background"
       />
-      {portf ? <Portfolio /> : <></>}
-      {startupMenu ? <Startup /> : <></>}
-      {valo ? <ValorantTab /> : <></>}
-      {term ? <Terminal /> : <></>}
-      {fn ? <Fortnite /> : <></>}
+      {portfolio ? <Portfolio /> : <></>}
+      {startup ? <Startup /> : <></>}
+      {valorant ? <ValorantTab /> : <></>}
+      {terminal ? <Terminal /> : <></>}
+      {fortnite ? <Fortnite /> : <></>}
     </div>
   );
 }

@@ -2,7 +2,8 @@ import axios from "axios";
 import { React, useState, useEffect, useContext } from "react";
 import { StoreContext } from "../../utils/Store";
 import { IoArrowBackCircle } from "react-icons/io5";
-
+import { useDispatch } from "react-redux";
+import { ApplicationClose, CloseApplication } from "../../actions/App";
 const apiCall = async ({ url }) => {
   let apiReturn = await axios.get(url).then((res) => {
     return res;
@@ -11,6 +12,7 @@ const apiCall = async ({ url }) => {
 };
 
 function ValorantTab() {
+  const dispatch = useDispatch();
   const puuid = "aad0f584-33a6-5127-b540-4fd558ad2992";
   const [userData, setUserData] = useState();
   const [recentMatches, setRecentMatches] = useState();
@@ -39,7 +41,7 @@ function ValorantTab() {
   const [home, setHome] = useState(true);
 
   return (
-    <div className={`z-${zindex[1]} absolute bottom-24 left-1/4 h-3/4 w-2/4`}>
+    <div className={`z-0 absolute bottom-24 left-1/4 h-3/4 w-2/4`}>
       <IoArrowBackCircle
         color="rgba(255,70,84,255)"
         size="50"
@@ -52,7 +54,7 @@ function ValorantTab() {
         src="/images/valorant/close.png"
         className="absolute left-full bottom-3/4 hover:border-2 rounded-r-3xl border-valored"
         onClick={() => {
-          setValo(false);
+          dispatch(CloseApplication("valorant"));
         }}
       />
       {home ? (

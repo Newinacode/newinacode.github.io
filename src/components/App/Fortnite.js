@@ -1,11 +1,12 @@
 import { React, useEffect, useState, useContext } from "react";
 import { apiCall } from "../../utils/APICall";
-import { StoreContext } from "../../utils/Store";
+import { CloseApplication } from "../../actions/App";
+import { useDispatch } from "react-redux";
+
 function Fortnite() {
   const [userData, setUserData] = useState();
-  const { z_index, fortnite } = useContext(StoreContext);
-  const [zindex, setZindex] = z_index;
-  const [fn, setFn] = fortnite;
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const fetchData = async (url) => {
       let response = await apiCall({ url: url });
@@ -16,7 +17,7 @@ function Fortnite() {
   }, []);
 
   return (
-    <div className={`z-${zindex[2]} absolute bottom-24 left-1/4 h-3/4 w-2/4`}>
+    <div className={`z-0 absolute bottom-24 left-1/4 h-3/4 w-2/4`}>
       {userData ? (
         <div>
           <img src={userData.image} alt="account image" />
@@ -30,7 +31,7 @@ function Fortnite() {
             src="/images/close-fn.png"
             className="absolute left-full bottom-3/4 hover:border-2 rounded-r-3xl border-fortnite"
             onClick={() => {
-              setFn(false);
+              dispatch(CloseApplication("fortnite"));
             }}
           />
         </div>

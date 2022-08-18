@@ -1,14 +1,11 @@
-import { React, useState, useContext } from "react";
-import { StoreContext } from "../../utils/Store";
-
+import { React } from "react";
+import { CloseApplication } from "../../actions/App";
+import { useDispatch } from "react-redux";
 function Terminal() {
-  const { terminal, z_index } = useContext(StoreContext);
-  const [term, setTerm] = terminal;
-  const [zindex, setZindex] = z_index;
-
+  const dispatch = useDispatch();
   return (
     <div
-      className={`absolute z-${zindex[0]} bg-stone-900  bottom-24 left-1/4 box-border h-3/4 w-2/4 border-2 select-none`}
+      className={`absolute z-40 bg-stone-900  bottom-24 left-1/4 box-border h-3/4 w-2/4 border-2 select-none`}
     >
       {/* terminal heading */}
       <div className="flex h-6 bg-white items-center justify-between">
@@ -23,7 +20,7 @@ function Terminal() {
           </div>
           <div
             className="flex items-center justify-center w-6 h-6 hover:bg-gray-100"
-            onClick={() => setTerm(false)}
+            onClick={() => dispatch(CloseApplication("terminal"))}
           >
             <img className="h-4" src="/images/close.png" />
           </div>

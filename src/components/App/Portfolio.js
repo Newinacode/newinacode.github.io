@@ -1,10 +1,10 @@
 import { React, useContext } from "react";
 import { AiOutlineDownload, AiFillCloseSquare } from "react-icons/ai";
-import { StoreContext } from "../../utils/Store";
+import { useDispatch } from "react-redux";
+import { CloseApplication } from "../../actions/App";
 
 function Portfolio() {
-  const { portfolio } = useContext(StoreContext);
-  const [port, setPort] = portfolio;
+  const dispatch = useDispatch();
   return (
     <div className="flex absolute bottom-1/4 left-1/4 w-3/6 h-2/3">
       {/*  */}
@@ -30,7 +30,7 @@ function Portfolio() {
         <div
           className="mt-2 transition delay-75 h-10 w-10 hover:bg-red-50 hover:translate-y-1"
           onClick={() => {
-            setPort(false);
+            dispatch(CloseApplication("portfolio"));
           }}
         >
           <AiFillCloseSquare color="red" size="40" />
