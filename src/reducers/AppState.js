@@ -5,6 +5,7 @@ const initialState = {
   fortnite: false,
   startup: false,
   portfolio: false,
+  taskmanager: false,
 };
 const AppState = (state = initialState, action) => {
   const applicationName = action.payload;

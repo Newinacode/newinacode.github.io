@@ -4,11 +4,11 @@ import { useDispatch } from "react-redux";
 function Startup() {
   const dispatch = useDispatch();
   return (
-    <div className="flex absolute bottom-0 left-1/12 h-3/4 w-1/4 bg-slate-600">
+    <div className="flex absolute bottom-0 left-1/12 h-3/4 w-1/4 bg-indigo-100">
       {/* side icons */}
-      <div className="flex flex-col justify-between items-center bg-slate-800 h-5/6 w-1/6 mt-6 ml-2">
+      <div className="flex flex-col items-center bg-indigo-200 h-5/6 w-1/6 mt-6 ml-2 rounded">
         <div
-          className="flex justify-center w-full hover:bg-white"
+          className="flex justify-center items-center w-full h-14 hover:bg-white"
           onClick={() => dispatch(OpenApplication("brave"))}
         >
           <img
@@ -18,7 +18,7 @@ function Startup() {
           />
         </div>
         <div
-          className="flex justify-center w-full hover:bg-white"
+          className="flex justify-center items-center w-full h-14 hover:bg-white"
           onClick={() => dispatch(OpenApplication("discord"))}
         >
           <img
@@ -28,7 +28,7 @@ function Startup() {
           />
         </div>
         <div
-          className="flex justify-center w-full hover:bg-white"
+          className="flex justify-center items-center w-full h-14 hover:bg-white"
           onClick={() => dispatch(OpenApplication("fortnite"))}
         >
           <img
@@ -38,7 +38,7 @@ function Startup() {
           />
         </div>
         <div
-          className="flex justify-center w-full hover:bg-white"
+          className="flex justify-center items-center w-full h-14 hover:bg-white"
           onClick={() => dispatch(OpenApplication("valorant"))}
         >
           <img
@@ -48,7 +48,7 @@ function Startup() {
           />
         </div>
         <div
-          className="flex justify-center w-full hover:bg-white"
+          className="flex justify-center items-center w-full h-14 hover:bg-white"
           onClick={() => dispatch(OpenApplication("portfolio"))}
         >
           <img
@@ -57,15 +57,25 @@ function Startup() {
             className="w-10 h-10 p-1"
           />
         </div>
+        <div
+          className="flex justify-center items-center w-full h-14 hover:bg-white"
+          onClick={() => dispatch(OpenApplication("taskmanager"))}
+        >
+          <img
+            src="/images/taskmanager.png"
+            alt="task manager icons"
+            className="w-10 h-10 p-1"
+          />
+        </div>
 
-        <div className="flex justify-center w-full hover:bg-white">
+        <div className="flex justify-center items-center w-full h-14 hover:bg-white">
           <img
             src="/images/reloading.png"
             alt="shutdown icons"
             className="w-10 h-10 p-1"
           />
         </div>
-        <div className="flex justify-center w-full hover:bg-white">
+        <div className="flex justify-center items-center w-full h-14 hover:bg-white">
           <img
             src="/images/shutdown.png"
             alt="shutdown icons"

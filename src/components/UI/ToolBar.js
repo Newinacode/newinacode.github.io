@@ -1,7 +1,5 @@
 import { React, useState, useEffect, useContext } from "react";
 import { FcLinux } from "react-icons/fc";
-import { StoreContext } from "../../utils/Store";
-import { Max } from "../../utils/MaxZindex";
 import { OpenApplication } from "../../actions/App";
 import { useDispatch, useSelector } from "react-redux";
 function ToolBar() {
@@ -106,7 +104,7 @@ function ToolBar() {
           onClick={() => dispatch(OpenApplication("valorant"))}
         >
           <img
-            src="/images/valo2.PNG"
+            src="/images/valo2.png"
             className="h-12"
             alt="valorant game icon"
           />

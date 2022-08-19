@@ -8,11 +8,19 @@ import { useSelector } from "react-redux";
 import Portfolio from "../App/Portfolio";
 import { useDispatch } from "react-redux";
 import { CloseApplication } from "../../actions/App";
+import Discord from "../App/Discord";
+import TaskManager from "../App/TaskManager";
 function Background() {
   const dispatch = useDispatch();
-  const { terminal, valorant, fortnite, portfolio, startup } = useSelector(
-    (state) => state
-  );
+  const {
+    terminal,
+    valorant,
+    fortnite,
+    portfolio,
+    startup,
+    discord,
+    taskmanager,
+  } = useSelector((state) => state);
   return (
     <div
       className="relative"
@@ -27,11 +35,14 @@ function Background() {
         alt="background image"
         className="background"
       />
+
+      {discord ? <Discord /> : <></>}
       {portfolio ? <Portfolio /> : <></>}
       {startup ? <Startup /> : <></>}
       {valorant ? <ValorantTab /> : <></>}
       {terminal ? <Terminal /> : <></>}
       {fortnite ? <Fortnite /> : <></>}
+      {taskmanager ? <TaskManager /> : <></>}
     </div>
   );
 }
