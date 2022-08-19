@@ -1,8 +1,9 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { CloseApplication } from "../../actions/App";
 function TaskManager() {
   const states = useSelector((state) => state);
-
+  const dispatch = useDispatch();
   const table_data = Object.entries(states).map((state) => {
     if (state[1] == true) {
       return (
@@ -18,7 +19,15 @@ function TaskManager() {
     <div className="z-40 absolute bottom-1/4 left-1/4 w-3/6 h-2/3 bg-white">
       <div className="flex justify-between  h-7 bg-white w-full p-1">
         <span>Task Manager</span>
-        <img src="images/close.png" />
+
+        <div
+          className="h-7 hover:bg-white"
+          onClick={() => {
+            dispatch(CloseApplication("taskmanager"));
+          }}
+        >
+          <img src="images/close.png" className="h-5" />
+        </div>
       </div>
       <div className="flex justify-center">
         <button className="p-2 mt-2 bg-sky-500 rounded">Processes</button>

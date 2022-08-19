@@ -68,7 +68,7 @@ function ToolBar() {
   // };
 
   return (
-    <div className="flex bg-cyan-900 h-14 items-center justify-between select-none">
+    <div className="absolute bottom-0 w-full flex bg-cyan-900 h-14 items-center justify-between select-none">
       {/* right side icons menu  */}
       <div
         className="flex h-14 w-16 hover:bg-gray-50 items-center justify-center"

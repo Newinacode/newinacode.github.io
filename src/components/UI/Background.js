@@ -33,7 +33,7 @@ function Background() {
       <img
         src="/images/back3.jpg"
         alt="background image"
-        className="background"
+        className="h-screen w-full"
       />
 
       {discord ? <Discord /> : <></>}
