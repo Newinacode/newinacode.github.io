@@ -1,0 +1,22 @@
+{
+  "short_name": "Rupesh Acharya",
+  "name": "Rupesh Acharya — Python Developer",
+  "description": "The interactive desktop-style portfolio of Rupesh Acharya.",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#05070b",
+  "theme_color": "#05070b",
+  "orientation": "any"
+}

@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+# Rupesh Acharya — Portfolio OS
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An interactive, desktop-style personal portfolio for **Rupesh Acharya**, a Python developer based in Kathmandu, Nepal. Instead of a scrolling page, the site boots into a small operating system in the browser: draggable windows, a start menu, a working terminal, a task manager, and a browser with the full profile site inside it.
 
-## Available Scripts
+**Live:** [newinacode.github.io](https://newinacode.github.io/)
 
-In the project directory, you can run:
+![Portfolio preview](public/images/preview.jpg)
 
-### `npm start`
+![Desktop preview](public/images/preview-desktop.jpg)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Desktop shell** — wallpaper, desktop shortcuts, a start menu with search, a live clock, and window focus management.
+- **Draggable windows** — minimize, maximize, close, and bring windows to the front. Windows are responsive and become full-screen on mobile.
+- **Brave browser** — a complete portfolio inside a browser window with Home, About, Projects, Resume, and Contact pages.
+- **Working terminal** — commands including `help`, `about`, `projects`, `skills`, `contact`, `open <app>`, `neofetch`, `ls`, `cat`, and history/autocomplete support.
+- **Resume viewer** — preview the original PDF, download it, or open it in a new tab.
+- **Task Manager** — see every open window, focus, z-index, and end tasks.
+- **Power controls** — restart or shut down the little OS from the start menu.
+- **Profile content** — projects, education, skills, languages, and contact links pulled from a single `profile.js` data file.
 
-### `npm test`
+## Apps
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| App | What it does |
+| --- | --- |
+| Brave | Full profile website: home, about, projects, resume, contact |
+| Terminal | Interactive shell with real commands and virtual files |
+| Resume | PDF viewer + download |
+| Task Manager | Running windows and process controls |
+| Discord | Community invite |
+| Valorant / Fortnite | A couple of gaming detours |
 
-### `npm run build`
+## Tech stack
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- React 18
+- Redux
+- Tailwind CSS 3
+- Create React App
+- GitHub Pages
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Run locally
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm install
+npm start
+```
 
-### `npm run eject`
+The app runs at [http://localhost:3000](http://localhost:3000).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Build
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm run build
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The production build is written to `build/`.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Deploy to GitHub Pages
 
-## Learn More
+```bash
+npm run deploy
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This builds the app and publishes the `build/` folder to the `gh-pages` branch. The site is configured for `https://newinacode.github.io/`.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Project structure
 
-### Code Splitting
+```text
+src/
+  actions/           Redux actions for opening, focusing, and closing windows
+  components/
+    App/             Individual app windows (Brave, Terminal, Resume, ...)
+    UI/              Desktop shell, taskbar, start menu, window chrome
+  config/
+    apps.js          App metadata used by the taskbar, start menu, and task manager
+    profile.js       All portfolio content in one place
+  reducers/          Window/start-menu state
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Editing content
 
-### Analyzing the Bundle Size
+Most content lives in [`src/config/profile.js`](src/config/profile.js) — name, summary, links, skills, projects, education, and languages. App names, icons, and search keywords live in [`src/config/apps.js`](src/config/apps.js).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## License
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Personal project. The code is free to learn from; the content, resume, and artwork belong to Rupesh Acharya.

@@ -4,9 +4,35 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        valored: "rgba(255,70,84,255)",
-        valoblue: "rgba(21,36,49,255)",
-        fortnite: "rgba(3,167,255,255)",
+        valored: "#ff4655",
+        valoblue: "#152431",
+        fortnite: "#03a7ff",
+        slate: {
+          950: "#020617",
+        },
+        indigo: {
+          950: "#1e1b4b",
+        },
+      },
+      fontFamily: {
+        sans: [
+          '"Segoe UI"',
+          "-apple-system",
+          "BlinkMacSystemFont",
+          '"Helvetica Neue"',
+          "Arial",
+          "sans-serif",
+        ],
+        mono: [
+          '"SFMono-Regular"',
+          "Consolas",
+          '"Liberation Mono"',
+          "Menlo",
+          "monospace",
+        ],
+      },
+      boxShadow: {
+        desktop: "0 32px 90px -30px rgba(0,0,0,0.95)",
       },
     },
   },

@@ -1,7 +1,9 @@
 {
-  "name": "prot",
-  "homepage":"https://newinacode.github.io",
-  "version": "0.1.0",
+  "name": "rupesh-portfolio-os",
+  "homepage": "https://newinacode.github.io/",
+  "version": "1.0.0",
+  "description": "An interactive desktop-style portfolio for Rupesh Acharya, built with React, Redux, and Tailwind CSS.",
+  "author": "Rupesh Acharya",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",

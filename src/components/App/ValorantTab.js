@@ -1,141 +1,81 @@
-import axios from "axios";
-import { React, useState, useEffect } from "react";
-import { IoArrowBackCircle } from "react-icons/io5";
 import { useDispatch } from "react-redux";
-import { CloseApplication } from "../../actions/App";
-const apiCall = async ({ url }) => {
-  let apiReturn = await axios.get(url).then((res) => {
-    return res;
-  });
-  return apiReturn;
-};
+import { FiArrowRight, FiExternalLink, FiPlay } from "react-icons/fi";
+import { OpenApplication } from "../../actions/App";
+import { PROFILE } from "../../config/profile";
+import Window from "../UI/Window";
 
 function ValorantTab() {
   const dispatch = useDispatch();
-  const puuid = "aad0f584-33a6-5127-b540-4fd558ad2992";
-  const [userData, setUserData] = useState();
-  const [recentMatches, setRecentMatches] = useState();
-
-  useEffect(() => {
-    const url = `https://api.henrikdev.xyz/valorant/v1/by-puuid/mmr/ap/${puuid}`;
-    const recentGamesUrl = `https://api.henrikdev.xyz/valorant/v1/by-puuid/mmr-history/ap/${puuid}`;
-    const fetchData = async (url) => {
-      let response = await apiCall({ url: url });
-      return setUserData(response.data);
-    };
-    setUserData(fetchData(url));
-
-    const fData = async (url) => {
-      let response = await apiCall({ url: url });
-      return setRecentMatches(response.data);
-    };
-
-    setRecentMatches(fData(recentGamesUrl));
-  }, []);
-
-  const [home, setHome] = useState(true);
 
   return (
-    <div className={`z-0 absolute bottom-24 left-1/4 h-3/4 w-2/4`}>
-      <IoArrowBackCircle
-        color="rgba(255,70,84,255)"
-        size="50"
-        className="absolute left-full bottom-2/4 hover:border-2 rounded-r-3xl border-valored"
-        onClick={() => {
-          setHome(true);
-        }}
-      />
-      <img
-        src="/images/valorant/close.png"
-        className="absolute left-full bottom-3/4 hover:border-2 rounded-r-3xl border-valored"
-        onClick={() => {
-          dispatch(CloseApplication("valorant"));
-        }}
-      />
-      {home ? (
-        <div className="relative">
-          <img src="/images/valorant/sage2.png" />
+    <Window
+      app="valorant"
+      dark
+      title="Valorant"
+      subtitle="Riot Games"
+      bodyClassName="bg-[#0f1923]"
+    >
+      <div className="relative h-full min-h-0 overflow-hidden bg-[#0f1923] text-white">
+        <img
+          src="/images/valorant/sage2.png"
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover object-center opacity-90"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0f1923] via-[#0f1923]/85 to-[#0f1923]/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0f1923] via-transparent to-transparent" />
 
-          <button className="absolute bottom-8 left-1/4 bg-valored p-2 hover:bg-valoblue duration-300">
-            <span
-              className="text-white"
-              onClick={() => {
-                setHome(false);
-              }}
-            >
-              WATCH MY STATS
-            </span>
-          </button>
+        <div className="relative flex h-full max-w-lg flex-col justify-center px-5 py-6 sm:px-9">
+          <div className="flex items-center gap-2.5">
+            <img
+              src="/images/valo2.png"
+              alt="Valorant"
+              className="h-9 w-9 object-contain"
+            />
+            <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-valored">
+              5v5 tactical shooter
+            </p>
+          </div>
 
-          <button className="absolute bottom-8 left-2/4 bg-valored p-2 hover:bg-valoblue duration-300 opacity-95">
+          <h2 className="mt-3 text-4xl font-black tracking-tight sm:text-5xl">
+            VALORANT
+          </h2>
+          <p className="mt-3 max-w-sm text-sm leading-relaxed text-slate-300">
+            When I'm not writing code, I'm probably holding a site. A little
+            competitive FPS is my favourite way to reset after a long build.
+          </p>
+
+          <div className="mt-5 flex flex-wrap gap-2">
             <a
-              href="https://playvalorant.com/"
-              className="text-white"
+              href={PROFILE.links.valorant}
               target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded bg-valored px-4 py-2.5 text-xs font-bold uppercase tracking-wide text-white transition hover:bg-[#ff5b67]"
             >
-              PLAY VALORANT
+              <FiPlay size={13} /> Play Valorant
             </a>
-          </button>
-        </div>
-      ) : (
-        <div className="h-4/5 relative bg-gradient-to-r from-valoblue to-valored">
-          {userData.data && recentMatches.data ? (
-            <div>
-              <div className="flex justify-between">
-                <div className="flex m-2 items-center">
-                  <img
-                    src="images/valo2.png"
-                    className="h-10 w-10"
-                    alt="valorant logo"
-                  />
-                  <span className="ml-1 text-2xl text-white">
-                    {userData.data.name}
-                  </span>
+            <button
+              type="button"
+              onClick={() => dispatch(OpenApplication("brave"))}
+              className="inline-flex items-center gap-2 rounded border border-white/20 bg-white/5 px-4 py-2.5 text-xs font-semibold text-slate-200 transition hover:bg-white/10"
+            >
+              Back to portfolio <FiArrowRight size={13} />
+            </button>
+          </div>
 
-                  <div className="ml-2 bg-white opacity-40">
-                    <span className="text-2xl mx-2 text-zinc-400">
-                      #{userData.data.tag}
-                    </span>
-                  </div>
-                </div>
-                <div className="flex m-4">
-                  <img src={userData.data.images.small} alt="rank account" />
-                  <div>
-                    <p className="text-xl text-stone-300 font-semibold">
-                      Rating
-                    </p>
-                    <span className="text-xl text-white font-black">
-                      {userData.data.currenttierpatched}
-                    </span>
-                  </div>
-                </div>
-              </div>
-              {/*recent 20 games  */}
-              <div className="m-2 text-2xl text-white font-black mt-10">
-                Recent Games Played
-              </div>
-              <div className="ml-2 flex justify-around w-1/2 items-center mb-3">
-                {recentMatches.data.map((match) => (
-                  <div
-                    className={`text-white w-1/12 ${
-                      match["mmr_change_to_last_game"] > 0
-                        ? "bg-green-600"
-                        : "bg-red-600"
-                    }`}
-                  >
-                    <span className="px-2 font-semibold">
-                      {match["mmr_change_to_last_game"] > 0 ? " W " : " L "}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ) : (
-            <div>Loading</div>
-          )}
+          <div className="mt-6 flex items-center gap-2 text-[10px] text-slate-500">
+            <FiExternalLink size={11} />
+            <a
+              href={PROFILE.links.valorant}
+              target="_blank"
+              rel="noreferrer"
+              className="underline decoration-slate-700 underline-offset-2 transition hover:text-slate-300"
+            >
+              playvalorant.com
+            </a>
+          </div>
         </div>
-      )}
-    </div>
+      </div>
+    </Window>
   );
 }
 
